@@ -5,3 +5,16 @@
         width: 200px;
     }
 }
+
+.brand_by_label {
+    font-weight: 700;
+    font-size: 12px;
+    text-transform: uppercase;
+}
+
+.brand_logo {
+    height: 200px;
+    width: 200px;
+    border-radius: 4px;
+    object-fit: contain;
+}

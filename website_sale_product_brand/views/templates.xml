@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<odoo>
+    <template id="product_brand_product_page"
+              inherit_id="website_sale.product" customize_show="True"
+              active="True" name="Brand Details">
+        <xpath expr="//hr[@t-if='product.description_sale']" position="before">
+            <t t-set="product_brand_id" t-value="product.sudo().product_brand_id"/>
+            <t t-if="product_brand_id">
+                <hr class=""/>
+                <pre>
+                    <t t-esc="product_brand_id.website_published"/>
+                </pre>
+                <section class="container">
+                    <div class="col-md-12" id="brand_info">
+                        <div class="brand_by_label mb4" style="">By</div>
+                        <div class="row" id="selle_pic_name_add">
+                            <div class="col-md-12">
+                                <div style="">
+                                    <a t-if="product_brand_id.website_published" itemprop="url"
+                                       t-att-href="keep('/shop/brands',brand=product_brand_id.id)">
+                                        <span>
+                                            <img
+                                                t-attf-src="/web/image/product.brand/#{product_brand_id.id}/logo"
+                                                class="brand_logo"
+                                                t-att-alt="product_brand_id.name" title="Brand"/>
+                                        </span>
+                                    </a>
+                                    <a t-if="not product_brand_id.website_published">
+                                        <span>
+                                            <img
+                                                t-attf-src="/web/image/product.brand/#{product_brand_id.id}/logo"
+                                                class="brand_logo"
+                                                t-att-alt="product_brand_id.name" title="Brand"/>
+                                        </span>
+                                    </a>
+                                </div>
+                            </div>
+                            <!--
+                                                        <div class="col-md-9">
+                                                            <div
+                                                                style="color: rgb(41, 121, 183);background-color: rgb(245, 245, 245);border-radius: 3px;padding: 0px 10px 0px 10px;height: 80px;overflow: auto;">
+                                                                <div class="mt4">
+                                                                    <i class="fa fa-user"/>
+                                                                    <span class="">
+                                                                        &lt;!&ndash; <a itemprop="name" target="_blank" t-attf-href="/member/profile/#{marketplace_member_id.sudo().url_handler if marketplace_member_id.sudo().url_handler else marketplace_member_id.sudo().id}" t-field="marketplace_member_id.sudo().name"/> &ndash;&gt;
+                                                                        <a t-if="marketplace_member_id.website_published" itemprop="name"
+                                                                           t-attf-href="/member/profile/#{marketplace_member_id.sudo().url_handler if marketplace_member_id.sudo().url_handler else marketplace_member_id.sudo().id}"
+                                                                           t-field="marketplace_member_id.sudo().name"/>
+                                                                        <t t-if="not marketplace_member_id.website_published"
+                                                                           t-esc="marketplace_member_id.sudo().name"/>
+                                                                    </span>
+                                                                </div>
+                                                                <t t-if="website.marketplace_member_review">
+                                                                    <t t-set="total_reviews"
+                                                                       t-value="len(marketplace_member_id.fetch_active_review(marketplace_member_id.sudo().id))"/>
+                                                                    <t t-set="avg_val" t-value="marketplace_member_id.avg_review()"/>
+                                                                    <span class="" style="display:inline-flex;" title="Average Review">
+                                                                        <input id="star-readonly" class="rating form-control d-none"
+                                                                               t-attf-value="#{avg_val}" data-show-clear="false"
+                                                                               data-show-caption="false" data-min="0" data-max="5" data-step="0.1"
+                                                                               data-readonly="true" data-size="xs" data-symbol="&#xf005;"
+                                                                               data-glyphicon="false" data-rating-class="rating-fa"/>
+                                                                        <span style="padding: 7px;">
+                                                                            ( <t t-esc="avg_val"/>
+                                                                            / 5 )
+                                                                        </span>
+                                                                    </span>
+                                                                </t>
+                                                                <t t-set="member_add_state" t-value="marketplace_member_id.state_id"/>
+                                                                <t t-set="member_add_country" t-value="marketplace_member_id.country_id"/>
+                                                                <t t-if="member_add_state and member_add_country">
+                                                                    <div class="pp-addrees">
+                                                                        <i class="fa fa-map-marker"/>
+                                                                        <t t-esc="member_add_state.name"/>
+                                                                        ,
+                                                                        <t t-esc="member_add_country.name"/>
+                                                                    </div>
+                                                                </t>
+                                                            </div>
+                                                        </div>
+                            -->
+                        </div>
+                    </div>
+                </section>
+            </t>
+        </xpath>
+    </template>
+
+</odoo>
